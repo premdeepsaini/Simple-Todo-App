@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="todoApp">
+    <head>
+        <meta charset="utf-8">
+        <title>Todo App</title>
+        <link rel="stylesheet" href="css/stylesheet.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+              crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+        <script src="js/services/service.js"></script>
+        <script src="js/controllers/controller.js"></script>
+        <script src="js/app.js"></script>
+    </head>
+    <body ng-controller="todoController">
+        <div class="container">
+            <div class="alignCenter card">
+                <h1>Todo App</h1>
+                <div class="form-group taskBox alignCenter">
+                    <textarea placeholder="Enter The Task" class="form-control taskTextarea" rows="5"
+                              ng-model="formData.text"></textarea>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block"
+                            ng-click="createTodo()">Add New Task</button>
+                </div>
+            </div>
+            <div class="card">
+                <h1>Todos</h1>
+                <div >
+                    <div class="todoList" ng-repeat="todo in todos">
+                        <div class="cardList row todoListItem">
+                            <div class="col-md-1 alignCenter">
+                                <input type="checkbox" value="todo.done" ng-model="todo.done" ng-click="updateTodo(todo)"/>
+                            </div>
+                            <div class="col-md-9">
+                                {{todo.text}}
+                            </div>
+                            <div class="col-md-2">
+                                <div class="helper">
+                                    <button type="submit" class="btn btn-danger deleteListItemBtn"
+                                            ng-click="deleteTodo(todo._id)">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </body>
+</html>
